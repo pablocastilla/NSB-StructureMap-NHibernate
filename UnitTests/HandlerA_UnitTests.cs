@@ -17,6 +17,8 @@ namespace UnitTests
         [TestMethod]
         public void HandlerATest()
         {
+            //http://ayende.com/blog/3983/nhibernate-unit-testing
+
             var privateObject = new PrivateObject(typeof(UnitOfWork));
 
             var container = new Container(cfg =>
@@ -27,10 +29,10 @@ namespace UnitTests
 
             });
 
-            Test.Initialize(b => b.UseContainer<StructureMapBuilder>(c => c.ExistingContainer(container)));
+            Test.Initialize();
 
             
-            Test.Handler<CommandAHandler>().OnMessage<CommandA>(); 
+            //Test.Handler<CommandAHandler>(b=> new CommandAHandler(null)).OnMessage<CommandA>(); 
         }
     }
 }

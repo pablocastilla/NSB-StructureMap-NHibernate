@@ -9,6 +9,7 @@ namespace HandlerA
     using Service1;
     using Shared.NHibernate;
     using StructureMap;
+    using Domain;
 
     /*
 		This class configures this endpoint as a Server. More information about how to configure the NServiceBus host
@@ -20,11 +21,13 @@ namespace HandlerA
         {
             var container = new Container(cfg =>
                 {
-                    cfg.Policies.FillAllPropertiesOfType<IService1>().Use<Service1>();
-                   
-                  //  cfg.Policies.FillAllPropertiesOfType<IService1>().Use<Service1>("prime");                   
+                    cfg.Policies.FillAllPropertiesOfType<IService1>().Use<VendorXService1>();
+                    cfg.For<IService1>().Use<VendorXService1>().Named("VENDORX");
+                    cfg.For<IService1Factory>().Use<Service1Factory>();                   
+                  
                 });
 
+            configuration.SetDefaultDomainConfiguration(container);
             configuration.SetDefaultConfiguration(container);
             
         }

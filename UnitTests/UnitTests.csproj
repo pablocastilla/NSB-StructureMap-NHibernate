@@ -78,6 +78,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{01871b86-c498-4ece-b911-8ceac232227e}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HandlerA\HandlerA.csproj">
       <Project>{5693665e-c194-4384-8cdd-e367c09b87fc}</Project>
       <Name>HandlerA</Name>

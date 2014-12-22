@@ -1,37 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Dialect;
+using NHibernate.Driver;
+using NHibernate.Mapping.ByCode;
 
 [assembly: InternalsVisibleTo("UnitTests")]
 namespace Shared.NHibernate
 {
     
-    class UnitOfWork : IUnitOfWork
+    public abstract class UnitOfWork : IUnitOfWork
     {
         public Guid id { get; set; }
 
-        public UnitOfWork()
+
+        private static ISessionFactory sessionFactory; 
+        private ISession session;
+        
+      
+        public UnitOfWork(ISessionFactoryCreator sessionFactoryCreator)
         {
             id = Guid.NewGuid();
+
+            sessionFactory = sessionFactoryCreator.CreateSessionFactory();  
+
+            session = sessionFactory.OpenSession();
+            session.BeginTransaction();
         }
 
+     
         public ISession CurrentSession
         {
-            get { throw new NotImplementedException(); }
-        }
+            get { return session; }
+
+       }
 
         public void Commit()
         {
-          //  throw new NotImplementedException();
+            session.Transaction.Commit();
         }
 
         public void Dispose()
         {
-          //  throw new NotImplementedException();
+            if (session != null)
+            {
+                session.Dispose();
+            }
+            if (session.Transaction != null)
+            {
+                session.Transaction.Dispose();
+            }
         }
     }
 }

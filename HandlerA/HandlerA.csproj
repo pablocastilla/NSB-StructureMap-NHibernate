@@ -83,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{01871b86-c498-4ece-b911-8ceac232227e}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Messages\Messages.csproj">
       <Project>{e34449c0-0aa8-42c7-9e8c-19d833b658a2}</Project>
       <Name>Messages</Name>

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -57,6 +60,7 @@
       <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,9 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NHibernate\AbstractRepository.cs" />
+    <Compile Include="NHibernate\IAbstractRepository.cs" />
+    <Compile Include="NHibernate\ISessionFactoryCreator.cs" />
     <Compile Include="NHibernate\IUnitOfWork.cs" />
     <Compile Include="NHibernate\UnitOfWork.cs" />
-    <Compile Include="NSB\NSBUnitOfWorkManager.cs" />
+    <Compile Include="NHibernate\NSBUnitOfWorkManager.cs" />
     <Compile Include="NSB\NServiceBusDefaultConfiguration.cs" />
     <Compile Include="NSB\NServiceBusDefaultTestConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

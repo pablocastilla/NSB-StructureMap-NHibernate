@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Shared.NHibernate;
 
 namespace Service1
 {
-    public class Service1 : IService1
+    public class VendorYService1: IService1
     {
-        public IUnitOfWork UoW { get; set; }
+        public VendorYService1()
+        {
+
+        }
+
 
         public void DoSomething()
         {
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }
