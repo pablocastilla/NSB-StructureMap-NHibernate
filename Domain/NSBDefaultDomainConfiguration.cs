@@ -20,15 +20,23 @@ namespace Domain
             
             container.Configure(
                 cfg =>
-                {                    
-                    cfg.Policies.FillAllPropertiesOfType<IDomainUnitOfWork>().Use<DomainUnitOfWork>();
+                {
+                    cfg.For<IDomainUnitOfWork>().Use<DomainUnitOfWork>();
                     cfg.Forward<IDomainUnitOfWork,IUnitOfWork>();
                     cfg.Policies.FillAllPropertiesOfType<IUnitOfWork>();
-                    cfg.Policies.FillAllPropertiesOfType<IARepository>().Use<ARepository>();
-                    cfg.For<ISessionFactoryCreator>().Use<DomainSessionFactoryCreator>();    
+                    cfg.For<ISessionFactoryCreator>().Use<DomainSessionFactoryCreator>().Singleton(); 
+
+                /*    cfg.For<IARepository>().Use<ARepository>();
+                       
                   
                                      
-                    cfg.For<IManageUnitsOfWork>().Use<NSBUnitOfWorkManager>();               
+                    cfg.For<IManageUnitsOfWork>().Use<NSBUnitOfWorkManager>();*/
+
+                   /* cfg.Scan(scan =>
+                    {
+
+                        scan.WithDefaultConventions();
+                    });*/
                                  
                 }
                 );

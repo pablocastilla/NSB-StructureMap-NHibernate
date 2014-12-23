@@ -8,6 +8,6 @@ namespace Service1
 {
     public interface IService1
     {
-       void DoSomething();
+       void DoSomething(string name);
     }
 }

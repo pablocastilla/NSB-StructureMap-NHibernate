@@ -20,9 +20,7 @@ namespace Shared.NHibernate
     public abstract class UnitOfWork : IUnitOfWork
     {
         public Guid id { get; set; }
-
-
-        private static ISessionFactory sessionFactory; 
+                       
         private ISession session;
         
       
@@ -30,10 +28,13 @@ namespace Shared.NHibernate
         {
             id = Guid.NewGuid();
 
-            sessionFactory = sessionFactoryCreator.CreateSessionFactory();  
+            //creates the session factory
+            sessionFactoryCreator.GetSessionFactory();
+            session = sessionFactoryCreator.GetSessionFactory().OpenSession();
 
-            session = sessionFactory.OpenSession();
+            //begins the transaction that will be used in the handler
             session.BeginTransaction();
+
         }
 
      
@@ -50,14 +51,16 @@ namespace Shared.NHibernate
 
         public void Dispose()
         {
-            if (session != null)
-            {
-                session.Dispose();
-            }
             if (session.Transaction != null)
             {
                 session.Transaction.Dispose();
             }
+
+            if (session != null)
+            {
+                session.Dispose();
+            }
+          
         }
     }
 }

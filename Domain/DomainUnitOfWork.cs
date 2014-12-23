@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
@@ -13,6 +14,7 @@ using NHibernate.Dialect;
 using NHibernate.Driver;
 using Shared.NHibernate;
 
+[assembly: InternalsVisibleTo("UnitTests")]
 namespace Domain
 {
     class DomainUnitOfWork : UnitOfWork, IDomainUnitOfWork

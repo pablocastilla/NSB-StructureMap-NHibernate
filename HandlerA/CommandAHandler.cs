@@ -32,7 +32,7 @@ namespace HandlerA
         {
             var service1 = service1Factory.CreateService("VENDORX");
 
-            service1.DoSomething();
+            service1.DoSomething(message.Name);
 
         }
     }

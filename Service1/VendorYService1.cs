@@ -14,7 +14,7 @@ namespace Service1
         }
 
 
-        public void DoSomething()
+        public void DoSomething(string name)
         {
             // throw new NotImplementedException();
         }

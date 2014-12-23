@@ -20,11 +20,11 @@ namespace HandlerA
         public void Customize(BusConfiguration configuration)
         {
             var container = new Container(cfg =>
-                {
-                    cfg.Policies.FillAllPropertiesOfType<IService1>().Use<VendorXService1>();
+                {                  
                     cfg.For<IService1>().Use<VendorXService1>().Named("VENDORX");
                     cfg.For<IService1Factory>().Use<Service1Factory>();                   
                   
+                    
                 });
 
             configuration.SetDefaultDomainConfiguration(container);
@@ -46,7 +46,7 @@ namespace HandlerA
           {
               Bus.Send("HandlerA",new CommandA
               {
-                  
+                  Name = "Pepe"
               });
           }
 

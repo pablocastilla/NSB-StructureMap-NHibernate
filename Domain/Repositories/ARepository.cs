@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using NHibernate;
+using NHibernate.Linq;
 using Shared.NHibernate;
 
 namespace Domain.Repositories
@@ -20,9 +21,12 @@ namespace Domain.Repositories
 
         public IList<A> GetAsByName(string name)
         {
-            //throw new NotImplementedException();
+            
+            var result = session.QueryOver<A>()
+                .Where(a => a.Name == name).List();
+                       
 
-            return null;
+            return result;
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Shared.NHibernate
 {
     public interface ISessionFactoryCreator
     {
-        ISessionFactory CreateSessionFactory();
+        ISessionFactory GetSessionFactory();
     }
 }

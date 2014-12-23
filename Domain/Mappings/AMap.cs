@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using FluentNHibernate.Mapping;
+using Shared;
 
 namespace Domain.Mappings
 {
@@ -14,7 +15,16 @@ namespace Domain.Mappings
         {
             Table("A");
             LazyLoad();
-            Id(x => x.ID,"ID").GeneratedBy.Sequence("A_SEQ");
+
+            if (!UnitTestDetector.IsInUnitTest)
+            {
+                Id(x => x.ID, "ID").GeneratedBy.Sequence("A_SEQ");
+            }
+            else
+            {
+                Id(x => x.ID, "ID").GeneratedBy.Native();
+            }
+
             Map(x => x.Name).Column("NAME");
            
         }

@@ -20,6 +20,7 @@ namespace Shared
                 cfg =>
                 {                                
                     cfg.Policies.FillAllPropertiesOfType<IContainer>();
+                    cfg.For<IManageUnitsOfWork>().Use<NSBUnitOfWorkManager>();
                 }
                 );
 

@@ -24,10 +24,10 @@ namespace Service1
             this.bus = bus;
         }
 
-        public void DoSomething()
-        {           
+        public void DoSomething(string name)
+        {
 
-            domainUoW.GetARepository().Add(new A() { Name="Paco"});
+            domainUoW.GetARepository().Add(new A() { Name = name });
         }
     }
 }

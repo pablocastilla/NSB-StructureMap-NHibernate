@@ -9,5 +9,6 @@ namespace Messages
 {
     public class CommandA : ICommand
     {
+        public string Name { get; set; }
     }
 }
