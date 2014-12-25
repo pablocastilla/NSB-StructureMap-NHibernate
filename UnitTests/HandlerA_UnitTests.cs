@@ -24,9 +24,11 @@ namespace UnitTests
         public void HandlerATest()
         {
             var nameToInsert = "Paco";
+
+            //the dependencies are created.
             var domainTestSessionFactoryCreator = new DomainSessionFactoryTestCreator();
             IDomainUnitOfWork domainUoW =  new DomainUnitOfWork(domainTestSessionFactoryCreator);
-
+            
             Test.Initialize();
 
             Test.Handler<CommandAHandler>(
