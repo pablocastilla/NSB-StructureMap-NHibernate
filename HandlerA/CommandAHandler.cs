@@ -15,15 +15,12 @@ namespace HandlerA
 {
     public class CommandAHandler : IHandleMessages<CommandA>
     {
-        private IBus bus;
-
-        private IDomainUnitOfWork domainUoW;
+        private IBus bus;        
 
         private IService1Factory service1Factory;
 
-        public CommandAHandler(IDomainUnitOfWork uow, IBus bus, IService1Factory service1Factory)
-        {
-            domainUoW = uow;
+        public CommandAHandler(IBus bus, IService1Factory service1Factory)
+        {           
             this.bus = bus;
             this.service1Factory = service1Factory;
         }

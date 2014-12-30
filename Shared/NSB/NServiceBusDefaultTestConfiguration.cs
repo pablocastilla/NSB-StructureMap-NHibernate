@@ -14,17 +14,10 @@ namespace Shared
     public static class NServiceBusDefaultTestConfiguration
     {
         public static void SetDefaultTestConfiguration(this BusConfiguration configuration, IContainer container)
-        {
-           /* var container = new Container(cfg =>
-            {
-                
-                cfg.For<IManageUnitsOfWork>().Use<NSBUnitOfWorkManager>();
-                cfg.Policies.FillAllPropertiesOfType<IUnitOfWork>().Use<UnitOfWork>();
-
-
-            });*/
+        {      
 
             configuration.UseContainer<StructureMapBuilder>(c => c.ExistingContainer(container));
+
 
         }
     }

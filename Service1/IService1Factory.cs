@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Service1
 {
+    /// <summary>
+    /// class that returns a service by its vendor
+    /// </summary>
     public interface IService1Factory
     {
         IService1 CreateService(string vendorName);

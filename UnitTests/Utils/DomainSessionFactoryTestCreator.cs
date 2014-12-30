@@ -14,6 +14,10 @@ using Shared.NHibernate;
 
 namespace UnitTests.Utils
 {
+
+    /// <summary>
+    /// creates a temporal database in SQLite.
+    /// </summary>
     class DomainSessionFactoryTestCreator : ISessionFactoryCreator
     {
         ////http://ayende.com/blog/3983/nhibernate-unit-testing
@@ -36,9 +40,7 @@ namespace UnitTests.Utils
         }
 
         public ISessionFactory GetSessionFactory()
-        {            
-          
-
+        {                     
             return configuration.BuildSessionFactory();
         }
     }
