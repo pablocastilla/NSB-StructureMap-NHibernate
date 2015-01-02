@@ -17,9 +17,9 @@ namespace HandlerA
     {
         private IBus bus;        
 
-        private IService1Factory service1Factory;
+        private IService1ServiceLocator service1Factory;
 
-        public CommandAHandler(IBus bus, IService1Factory service1Factory)
+        public CommandAHandler(IBus bus, IService1ServiceLocator service1Factory)
         {           
             this.bus = bus;
             this.service1Factory = service1Factory;

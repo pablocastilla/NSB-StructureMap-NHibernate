@@ -30,7 +30,7 @@ namespace UnitTests
             var service1Mock = new Mock<IService1>();
             service1Mock.Setup(s1 => s1.DoSomething(It.IsAny<string>()));
             
-            var service1FactoryMock = new Mock<IService1Factory>();
+            var service1FactoryMock = new Mock<IService1ServiceLocator>();
             service1FactoryMock.Setup(sf1 => sf1.CreateService(It.IsAny<string>())).Returns(service1Mock.Object); 
 
             Test.Initialize();
@@ -63,7 +63,7 @@ namespace UnitTests
             Test.Initialize();
 
             Test.Handler<CommandAHandler>(
-                b => new CommandAHandler(b, new Service1Factory(domainUoW, b)))
+                b => new CommandAHandler(b, new Service1ServiceLocator(domainUoW, b)))
                 .OnMessage(new CommandA() { Name = nameToInsert });
 
             var result = domainUoW.GetARepository().GetAsByName(nameToInsert);

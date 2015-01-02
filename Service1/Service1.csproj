@@ -52,8 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService1Factory.cs" />
-    <Compile Include="Service1Factory.cs" />
+    <Compile Include="IService1ServiceLocator.cs" />
+    <Compile Include="Service1ServiceLocator.cs" />
     <Compile Include="VendorXService1.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

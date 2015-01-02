@@ -9,7 +9,7 @@ namespace Service1
     /// <summary>
     /// class that returns a service by its vendor
     /// </summary>
-    public interface IService1Factory
+    public interface IService1ServiceLocator
     {
         IService1 CreateService(string vendorName);
     }

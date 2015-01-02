@@ -11,13 +11,13 @@ using StructureMap;
 [assembly: InternalsVisibleTo("UnitTests")]
 namespace Service1
 {
-    public class Service1Factory : IService1Factory
+    public class Service1ServiceLocator : IService1ServiceLocator
     {
         private IBus bus;
 
         private IDomainUnitOfWork domainUoW;
        
-        public Service1Factory(IDomainUnitOfWork UoW, IBus bus)
+        public Service1ServiceLocator(IDomainUnitOfWork UoW, IBus bus)
         {
             this.bus = bus;
             this.domainUoW = UoW;
