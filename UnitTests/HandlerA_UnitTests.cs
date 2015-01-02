@@ -18,9 +18,9 @@ namespace UnitTests
     [TestClass]
     public class HandlerA_UnitTests
     {
-       /// <summary>
-       /// Unit test using Moq
-       /// </summary>
+        /// <summary>
+        /// Unit test using Moq
+        /// </summary>
         [TestMethod]
         public void HandlerAUnitTestUsingMocks()
         {
@@ -29,22 +29,22 @@ namespace UnitTests
             //the dependencies are created.
             var service1Mock = new Mock<IService1>();
             service1Mock.Setup(s1 => s1.DoSomething(It.IsAny<string>()));
-            
-            var service1FactoryMock = new Mock<IService1ServiceLocator>();
-            service1FactoryMock.Setup(sf1 => sf1.CreateService(It.IsAny<string>())).Returns(service1Mock.Object); 
+
+            var service1ServiceLocatorMock = new Mock<IService1ServiceLocator>();
+            service1ServiceLocatorMock.Setup(sf1 => sf1.CreateService(It.IsAny<string>())).Returns(service1Mock.Object);
 
             Test.Initialize();
 
             //calls to handler
             Test.Handler<CommandAHandler>(
-                b => new CommandAHandler(b, service1FactoryMock.Object))
+                b => new CommandAHandler(b, service1ServiceLocatorMock.Object))
                 .OnMessage(new CommandA() { Name = nameToInsert });
 
 
             //Verifies that the mock has been invoked.
-            service1Mock.Verify(s1 => s1.DoSomething(It.IsAny<string>()),Times.Once);
+            service1Mock.Verify(s1 => s1.DoSomething(It.IsAny<string>()), Times.Once);
 
-                      
+
         }
 
 

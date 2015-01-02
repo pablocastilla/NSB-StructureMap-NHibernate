@@ -20,11 +20,9 @@ namespace HandlerA
         public void Customize(BusConfiguration configuration)
         {
             var container = new Container(cfg =>
-                {                  
-                    cfg.For<IService1>().Use<VendorXService1>().Named("VENDORX");
+                {                                     
                     cfg.For<IService1ServiceLocator>().Use<Service1ServiceLocator>();                   
-                  
-                    
+                                      
                 });
 
             configuration.SetDefaultDomainConfiguration(container);
