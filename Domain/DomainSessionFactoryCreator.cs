@@ -17,26 +17,35 @@ namespace Domain
     class DomainSessionFactoryCreator : ISessionFactoryCreator
     {
         private NHibernate.Cfg.Configuration configuration;
+        private static Object lockO = new Object();
 
         private ISessionFactory sessionFactory;
  
         public DomainSessionFactoryCreator()
         {
-                configuration = Fluently.Configure()
-                .Database(OracleDataClientConfiguration.Oracle10
-                .ConnectionString(ConfigurationManager.ConnectionStrings["CONCEPT"].ConnectionString)
-                .Dialect<Oracle10gDialect>()
-                .Driver<OracleManagedDataClientDriver>()
-                )
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<A>()).BuildConfiguration();
-
-                new NHibernate.Tool.hbm2ddl.SchemaExport(configuration).Execute(false, true, false);
-
-                sessionFactory = configuration.BuildSessionFactory();
+           
         }
 
         public NHibernate.ISessionFactory GetSessionFactory()
         {
+            lock (lockO)
+            {
+                if (sessionFactory == null)
+                {
+                    configuration = Fluently.Configure()
+                       .Database(OracleDataClientConfiguration.Oracle10
+                       .ConnectionString(ConfigurationManager.ConnectionStrings["CONCEPT"].ConnectionString)
+                       .Dialect<Oracle10gDialect>()
+                       .Driver<OracleManagedDataClientDriver>()
+                       )
+                       .Mappings(m => m.FluentMappings.AddFromAssemblyOf<A>()).BuildConfiguration();
+
+                    new NHibernate.Tool.hbm2ddl.SchemaExport(configuration).Execute(false, true, false);
+
+                    sessionFactory = configuration.BuildSessionFactory();
+                }
+            }
+
             return sessionFactory;
         }
     }

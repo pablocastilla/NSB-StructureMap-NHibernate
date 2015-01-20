@@ -64,8 +64,10 @@
   <ItemGroup>
     <Compile Include="DomainSessionFactoryCreator.cs" />
     <Compile Include="Entities\A.cs" />
+    <Compile Include="Entities\B.cs" />
     <Compile Include="IDomainUnitOfWork.cs" />
     <Compile Include="Mappings\AMap.cs" />
+    <Compile Include="Mappings\BMap.cs" />
     <Compile Include="NSBDefaultDomainConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainUnitOfWork.cs" />

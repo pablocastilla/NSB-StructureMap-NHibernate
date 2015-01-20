@@ -26,18 +26,7 @@ namespace Domain
                     cfg.Policies.FillAllPropertiesOfType<IUnitOfWork>();
                     cfg.For<ISessionFactoryCreator>().Use<DomainSessionFactoryCreator>().Singleton(); 
 
-                /*    cfg.For<IARepository>().Use<ARepository>();
-                       
-                  
-                                     
-                    cfg.For<IManageUnitsOfWork>().Use<NSBUnitOfWorkManager>();*/
-
-                   /* cfg.Scan(scan =>
-                    {
-
-                        scan.WithDefaultConventions();
-                    });*/
-                                 
+                                             
                 }
                 );
 

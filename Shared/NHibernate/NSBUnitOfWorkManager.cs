@@ -10,7 +10,12 @@ namespace Shared
 {
     public class NSBUnitOfWorkManager : IManageUnitsOfWork 
     {
-        public IUnitOfWork UoW { get; set; }
+        private IUnitOfWork UoW { get; set; }
+
+        public NSBUnitOfWorkManager(IUnitOfWork uow)
+        {
+            UoW = uow;
+        }
 
         public void Begin()
         {
