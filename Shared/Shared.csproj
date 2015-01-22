@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NHibernate\AbstractRepository.cs" />
+    <Compile Include="NHibernate\AbstractSessionFactoryCreator.cs" />
     <Compile Include="NHibernate\IAbstractRepository.cs" />
     <Compile Include="NHibernate\ISessionFactoryCreator.cs" />
     <Compile Include="NHibernate\IUnitOfWork.cs" />

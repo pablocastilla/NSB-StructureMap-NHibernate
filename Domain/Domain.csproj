@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainSessionFactoryCreator.cs" />
     <Compile Include="Entities\A.cs" />
     <Compile Include="Entities\B.cs" />
     <Compile Include="IDomainUnitOfWork.cs" />
