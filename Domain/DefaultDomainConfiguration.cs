@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Repositories;
-using NServiceBus;
-using NServiceBus.UnitOfWork;
 using Shared;
 using Shared.NHibernate;
 using StructureMap;
@@ -14,9 +12,9 @@ using StructureMap.Pipeline;
 
 namespace Domain
 {
-    public static class NSBDefaultDomainConfiguration
+    public static class DefaultDomainConfiguration
     {
-        public static void SetDefaultDomainConfiguration(this BusConfiguration configuration, IContainer container)
+        public static void SetDefaultDomainConfiguration(this IContainer container)
         {
             
             container.Configure(

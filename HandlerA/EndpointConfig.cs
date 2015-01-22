@@ -25,7 +25,8 @@ namespace HandlerA
                                       
                 });
 
-            configuration.SetDefaultDomainConfiguration(container);
+            container.SetDefaultDomainConfiguration();
+            
             configuration.SetDefaultConfiguration(container);
             
         }

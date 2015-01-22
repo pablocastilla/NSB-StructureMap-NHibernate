@@ -35,6 +35,10 @@ namespace Shared.NHibernate
             this.connectionString = connectionString;
         }
 
+        /// <summary>
+        /// Returns the nhibernate session factory.
+        /// </summary>
+        /// <returns></returns>
         public ISessionFactory GetSessionFactory()
         {
             lock (lockO)
