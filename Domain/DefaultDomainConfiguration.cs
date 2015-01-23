@@ -23,7 +23,7 @@ namespace Domain
                     cfg.For<IDomainUnitOfWork>().Use<DomainUnitOfWork>();
                     cfg.Forward<IDomainUnitOfWork,IUnitOfWork>();
                     cfg.Policies.FillAllPropertiesOfType<IUnitOfWork>();
-                    cfg.For<ISessionFactoryCreator>().Use<AbstractSessionFactoryCreator<A>>().Ctor<string>("connectionString").Is("Data Source=localhost:1521/xe;Persist Security Info=True;User ID=CONCEPT;Password=CONCEPT").Singleton(); 
+                    cfg.For<ISessionFactoryCreator>().Use<AbstractSessionFactoryCreator<A>>().Ctor<string>("connectionStringName").Is("CONCEPT").Singleton(); 
 
                                              
                 }

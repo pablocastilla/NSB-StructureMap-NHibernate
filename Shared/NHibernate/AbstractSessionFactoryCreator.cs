@@ -22,7 +22,7 @@ namespace Shared.NHibernate
     {
         private global::NHibernate.Cfg.Configuration configuration;
         private static Object lockO = new Object();
-        private string connectionString;
+        private string connectionStringName;
 
         private ISessionFactory sessionFactory;
 
@@ -30,9 +30,9 @@ namespace Shared.NHibernate
         /// 
         /// </summary>
         /// <param name="connectionStringName">Name of the connection string in the config.</param>
-        public AbstractSessionFactoryCreator(string connectionString)
+        public AbstractSessionFactoryCreator(string connectionStringName)
         {
-            this.connectionString = connectionString;
+            this.connectionStringName = connectionStringName;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Shared.NHibernate
                 {
                     configuration = Fluently.Configure()
                        .Database(OracleDataClientConfiguration.Oracle10
-                       .ConnectionString(connectionString)
+                       .ConnectionString(ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString)
                        .Dialect<Oracle10gDialect>()
                        .Driver<OracleManagedDataClientDriver>()
                        )
