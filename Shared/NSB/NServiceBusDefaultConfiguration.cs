@@ -27,7 +27,7 @@ namespace Shared
             configuration.UseContainer<StructureMapBuilder>(c => c.ExistingContainer(container));
            
             configuration.UsePersistence<NHibernatePersistence>();
-            configuration.Transactions().DisableDistributedTransactions();
+            //configuration.Transactions().DisableDistributedTransactions();
         }
     }
 }

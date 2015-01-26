@@ -24,7 +24,7 @@ namespace Shared.NHibernate
         private ISession session;
         
       
-        public UnitOfWork(ISessionFactoryCreator sessionFactoryCreator)
+        public UnitOfWork(ISessionFactoryCreator sessionFactoryCreator, bool usingDistributedTransaction=true)
         {
             id = Guid.NewGuid();
 
@@ -33,7 +33,8 @@ namespace Shared.NHibernate
             session = sessionFactoryCreator.GetSessionFactory().OpenSession();
 
             //begins the transaction that will be used in the handler
-            session.BeginTransaction();
+            if(!usingDistributedTransaction)
+                session.BeginTransaction();
 
         }
 

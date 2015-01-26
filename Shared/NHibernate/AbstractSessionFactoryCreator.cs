@@ -53,7 +53,7 @@ namespace Shared.NHibernate
                        )
                        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<T>()).BuildConfiguration();
 
-                    new global::NHibernate.Tool.hbm2ddl.SchemaExport(configuration).Execute(false, true, false);
+                   // new global::NHibernate.Tool.hbm2ddl.SchemaExport(configuration).Execute(false, true, false);
 
                     sessionFactory = configuration.BuildSessionFactory();
                 }
