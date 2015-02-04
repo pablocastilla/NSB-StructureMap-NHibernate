@@ -8,6 +8,7 @@ using NServiceBus;
 using NServiceBus.Testing;
 using NServiceBus.UnitOfWork;
 using Service1;
+using Service1.DataAccess;
 using Shared;
 using Shared.NHibernate;
 using StructureMap;
@@ -58,7 +59,7 @@ namespace UnitTests
 
             //the dependencies are created using a special Session Factory for SQLite
             var domainTestSessionFactoryCreator = new DomainSessionFactoryTestCreator();
-            IDomainUnitOfWork domainUoW = new DomainUnitOfWork(domainTestSessionFactoryCreator);
+            IServiceXUoW domainUoW = new ServiceXUoW(domainTestSessionFactoryCreator);
 
             Test.Initialize();
 
@@ -66,7 +67,7 @@ namespace UnitTests
                 b => new CommandAHandler(b, new Service1ServiceLocator(domainUoW, b)))
                 .OnMessage(new CommandA() { Name = nameToInsert });
 
-            var result = domainUoW.GetARepository().GetAsByName(nameToInsert);
+            var result = domainUoW.GetAReadRepository().GetAsByName(nameToInsert);
 
             Assert.IsTrue(result.Count > 0);
         }

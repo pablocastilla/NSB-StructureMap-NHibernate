@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace Shared.NHibernate
 {
-    public abstract class AbstractRepository <TEntity> : IAbstractRepository <TEntity> where TEntity:class
+    public abstract class ReadAbstractRepository <TEntity> : IReadAbstractRepository <TEntity> where TEntity:class
     {
         protected  ISession session;
         public void Add(TEntity e)

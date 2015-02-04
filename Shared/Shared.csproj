@@ -69,13 +69,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NHibernate\AbstractRepository.cs" />
+    <Compile Include="NHibernate\IWriteAbstractRepository.cs" />
+    <Compile Include="NHibernate\ReadAbstractRepository.cs" />
     <Compile Include="NHibernate\AbstractSessionFactoryCreator.cs" />
-    <Compile Include="NHibernate\IAbstractRepository.cs" />
+    <Compile Include="NHibernate\IReadAbstractRepository.cs" />
     <Compile Include="NHibernate\ISessionFactoryCreator.cs" />
     <Compile Include="NHibernate\IUnitOfWork.cs" />
     <Compile Include="NHibernate\UnitOfWork.cs" />
     <Compile Include="NHibernate\NSBUnitOfWorkManager.cs" />
+    <Compile Include="NHibernate\WriteAbstractRepository.cs" />
     <Compile Include="NSB\NServiceBusDefaultConfiguration.cs" />
     <Compile Include="NSB\NServiceBusDefaultTestConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

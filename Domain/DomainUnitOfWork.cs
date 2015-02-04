@@ -17,7 +17,7 @@ using Shared.NHibernate;
 [assembly: InternalsVisibleTo("UnitTests")]
 namespace Domain
 {
-    class DomainUnitOfWork : UnitOfWork, IDomainUnitOfWork
+    public class DomainUnitOfWork : UnitOfWork, IDomainUnitOfWork
     {
      
 
@@ -28,9 +28,9 @@ namespace Domain
         }
 
 
-        IARepository IDomainUnitOfWork.GetARepository()
+        IReadARepository IDomainUnitOfWork.GetAReadRepository()
         {
-            return new ARepository(this.CurrentSession);
+            return new AReadRepository(this.CurrentSession);
         }
                
     }

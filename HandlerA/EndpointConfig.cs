@@ -10,6 +10,8 @@ namespace HandlerA
     using Shared.NHibernate;
     using StructureMap;
     using Domain;
+    using Service1.WriteRepository;
+    using Service1.DataAccess;
 
     /*
 		This class configures this endpoint as a Server. More information about how to configure the NServiceBus host
@@ -20,7 +22,8 @@ namespace HandlerA
         public void Customize(BusConfiguration configuration)
         {
             var container = new Container(cfg =>
-                {                                     
+                {
+                    cfg.For<IServiceXUoW>().Use<ServiceXUoW>();              
                     cfg.For<IService1ServiceLocator>().Use<Service1ServiceLocator>();                   
                                       
                 });

@@ -10,11 +10,11 @@ using Shared.NHibernate;
 
 namespace Domain.Repositories
 {
-    class ARepository : AbstractRepository<A>,IARepository
+    class AReadRepository : ReadAbstractRepository<A>,IReadARepository
     {
        
 
-        public ARepository(ISession session)
+        public AReadRepository(ISession session)
         {
             this.session = session;
         }

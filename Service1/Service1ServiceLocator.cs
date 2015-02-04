@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using NServiceBus;
+using Service1.DataAccess;
 using StructureMap;
 
 [assembly: InternalsVisibleTo("UnitTests")]
@@ -15,19 +16,19 @@ namespace Service1
     {
         private IBus bus;
 
-        private IDomainUnitOfWork domainUoW;
-       
-        public Service1ServiceLocator(IDomainUnitOfWork UoW, IBus bus)
+        private IServiceXUoW uow;
+
+        public Service1ServiceLocator(IServiceXUoW uow, IBus bus)
         {
             this.bus = bus;
-            this.domainUoW = UoW;
+            this.uow = uow;
         }
 
 
         public IService1 CreateService(string vendorName)
         {
             if (vendorName.ToUpper() == "VENDORX")
-                return new VendorXService1(domainUoW,bus);
+                return new VendorXService1(uow, bus);
 
             throw new ArgumentOutOfRangeException("Vendor doesn't exist!!!");
         }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Entities;
+using Domain;
 using Shared.NHibernate;
 
-namespace Domain.Repositories
+namespace Service1.DataAccess
 {
-    public interface IARepository : IAbstractRepository<A>
+    public interface IServiceXUoW : IDomainUnitOfWork
     {
-        IList<A> GetAsByName(string name);
+        IAWriteRepository GetAWriteRepository();
     }
 }

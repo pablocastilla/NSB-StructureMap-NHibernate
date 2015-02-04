@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using Domain;
 using Domain.Entities;
 using NServiceBus;
+using Service1.DataAccess;
 using Shared.NHibernate;
 
 namespace Service1
 {
     public class VendorXService1 : IService1
     {
-        private IDomainUnitOfWork domainUoW;
+        private IServiceXUoW uow;
 
         private IBus bus;
 
 
-        public VendorXService1(IDomainUnitOfWork uow, IBus bus)
+        public VendorXService1(IServiceXUoW uow, IBus bus)
         {
-            this.domainUoW = uow;
+            this.uow = uow;
 
             this.bus = bus;
         }
@@ -27,7 +28,7 @@ namespace Service1
         public void DoSomething(string name)
         {
 
-            domainUoW.GetARepository().Add(new A() { Name = name });
+            uow.GetAWriteRepository().Add(new A() { Name = name });
         }
     }
 }

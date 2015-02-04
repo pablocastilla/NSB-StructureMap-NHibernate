@@ -66,8 +66,8 @@
     <Compile Include="DefaultDomainConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainUnitOfWork.cs" />
-    <Compile Include="Repositories\ARepository.cs" />
-    <Compile Include="Repositories\IARepository.cs" />
+    <Compile Include="Repositories\AReadRepository.cs" />
+    <Compile Include="Repositories\IReadARepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj">
